@@ -1,0 +1,4 @@
+theme: jekyll-theme-minimal
+logo: assets/logo.png
+title: XGBoost
+show_downloads: false
