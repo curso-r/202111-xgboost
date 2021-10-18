@@ -19,8 +19,12 @@ Fora do horário de aula ou monitoria:
 
 ## Slides
 
-| slides |
-|:-------|
+| slides                                                                                                                                  |
+|:----------------------------------------------------------------------------------------------------------------------------------------|
+| [slides/slides_aux.pptx](https://curso-r.github.io/main-xgboost/slides/slides_aux.pptx)                                                 |
+| [slides/slides_xgb_teoria_e\_passo_a\_passo.pdf](https://curso-r.github.io/main-xgboost/slides/slides_xgb_teoria_e_passo_a_passo.pdf)   |
+| [slides/slides_xgb_teoria_e\_passo_a\_passo.pptx](https://curso-r.github.io/main-xgboost/slides/slides_xgb_teoria_e_passo_a_passo.pptx) |
+| [slides/xgboost.html](https://curso-r.github.io/main-xgboost/slides/xgboost.html)                                                       |
 
 ## Scripts utilizados em aula
 
