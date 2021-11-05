@@ -1,0 +1,104 @@
+---
+title: "Exercício 1"
+output: html_document
+---
+
+```{r}
+library(tidymodels)
+library(tidyverse)
+library(tidypredict)
+library(xgboost)
+library(DiagrammeR)
+
+# dados ----------------------------------------------------
+dados <- tribble(
+  ~dose, ~remedio, ~eficacia,
+  2,"A", -6,
+  8,"A",  4,
+  12,"A", 5,
+  16,"A", -5,
+  2,"B", -6 + 10,
+  8,"B",  4 + 10,
+  12,"B", 5 + 10,
+  16,"B", -5 + 10
+)
+
+dados
+```
+
+
+```{r}
+ajusta_xgboost_e_mostra_as_arvores <- function(arvores) {
+  set.seed(1)
+  xgb_model <- boost_tree(
+    mtry = 2,
+    sample_size = 1,
+    min_n = 1,
+    loss_reduction = 0,
+    learn_rate = 0.7,
+    tree_depth = 2,
+    trees = arvores
+  ) %>%
+    set_engine("xgboost", lambda = 0) %>%
+    set_mode("regression")
+  
+  xgb_fit <- fit(xgb_model, eficacia ~ dose + remedio, data = dados)
+  xgb.plot.tree(model=xgb_fit$fit)
+}
+```
+
+
+# EXERCÍCIO
+
+Traduza as árvores dos gráficos abaixo em "case_when's" para gerar uma coluna de predições na tabela `dados`.
+Em seguida, calcule o Erro Quadrático Médio dessas predições.
+
+## Item a)
+
+```{r}
+ajusta_xgboost_e_mostra_as_arvores(1)
+# resposta esperada:
+# predições: -0.2 -0.2 -0.2 -0.2  6.8  6.8  6.8  6.8
+# erro quadratico médio: 28.94
+```
+
+```{r}
+dados <- dados %>%
+  mutate(
+    predicao_modelo1 = 0.5 + case_when(
+      remedio == "B" ~ 6.29999971,
+      TRUE ~ -0.699999988
+    )
+  )
+
+mean((dados$eficacia - dados$predicao_modelo1)^2)
+```
+
+
+# Item b)
+
+```{r}
+ajusta_xgboost_e_mostra_as_arvores(2)
+# resposta esperada:
+# predições: -4.2599998  0.8733333  0.8733333  0.8733333  4.8400002  9.9733334  9.9733334  9.9733334
+# erro quadratico médio: 16.40627
+```
+
+```{r}
+dados <- dados %>%
+  mutate(remedioA = ifelse(remedio == "A", 1, 0)) %>%
+  mutate(
+    predicao_modelo2 = 0.5 + case_when(
+      remedio == "B" ~ 6.29999971,
+      TRUE ~ -0.699999988
+    ) + case_when(
+      remedio == "B" & dose <  5 ~  -1.9599998,
+      remedio == "B" & dose >= 5 ~ 3.17333364,
+      remedio == "A" & dose < 5 ~  -4.05999994,
+      remedio == "A" & dose >= 5 ~ 1.07333326
+    )
+  ) 
+
+mean((dados$eficacia - dados$predicao_modelo2)^2)
+
+```
