@@ -4,7 +4,7 @@
     <title>XGBoost</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2021-11-04" />
+    <meta name="date" content="2021-11-05" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
@@ -19,7 +19,7 @@ class: center, middle, inverse, title-slide
 # XGBoost
 ## Teoria e prática
 ### <img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '40%'>
-### 2021-11-04
+### 2021-11-05
 
 ---
 
@@ -30,11 +30,25 @@ class: center, middle, inverse, title-slide
 
 .pull-left[
 
+&lt;img src="img/athos2.jpg" width = 50%&gt;
+
+#### Athos Damiani
+
+Estatístico no IME/USP
+
+Senior Data Scientist na Nubank
 
 ]
 
 .pull-right[
 
+&lt;img src="img/dfalbel.png" width = 65%&gt;
+
+#### Daniel Falbel
+
+Estatístico no IME/USP
+
+Software Engineer na RStudio
 
 ]
 
@@ -83,6 +97,8 @@ class: center, middle, inverse, title-slide
 
 - Introdução
 
+- Árvore de Decisão - Mini-revisão
+
 - XGBoost - Teoria
 
 - XGBoost - passo a passo
@@ -101,7 +117,6 @@ class: center, middle, inverse, title-slide
 - Google Classroom + Introdução
 - Mostrar as contas na mão num exemplo de 4 pontos (regressão)
 - Mostrar as diferenças entre classificação e regressão
-- Exercícios de Quiz (sem R)
 - Exercícios de Script (algoritmo na mao feito em R)
 
 ]
@@ -113,7 +128,6 @@ class: center, middle, inverse, title-slide
 - Pacote tidymodels
 - Como que a matriz X tem que ir (dummy etc)
 - Overfitting/Computação
-- Exercícios de Quiz (sem R)
 - Exercício de treino de tunagem
 - Kaggle InClass
 ]
@@ -196,6 +210,48 @@ class: center, middle, inverse, title-slide
 &lt;img src="img/xgb_exemplo2.png" style=" display: block; margin-left: auto; margin-right: auto;width:500px"&gt;&lt;/img&gt;
 &lt;/a&gt;
 
+
+---
+
+## Alinhamento de conceitos
+
+&lt;img src="img/ml_101.png" width = 85%&gt;
+
+---
+
+# XGBoost
+
+.pull-left[
+
+
+## O que XGBoost é:
+
+- Um algoritmo de machine learning
+
+- Um modelo estatístico
+
+- Um fornecedor de probabilidades/estimativas
+
+- Um "concorrente" de regressão logística, random forest, redes neurais, etc.
+
+- Difícil de entender =)
+
+]
+
+.pull-right[
+
+
+## O que XGBoost NÃO é:
+
+- Magia
+
+- Bala de prata para qualquer problema
+
+- Pior que deep learning
+
+- Melhor que deep learning
+
+]
 
 ---
 
@@ -301,31 +357,6 @@ class: inverse, middle, center
 # XGBoost
 
 ## Exemplo passo-a-passo (no pptx)
-
-
----
-
-class: inverse, middle, center
-
-# XGBoost
-
-## Na prática
-
----
-
-# Sobre os problemas nos dados
-
-- XGBoost trata missing automaticamente dentro dele, não precisa tratar. Porém, sempre vale técnicas de imputação para tentar aprimorar o modelo!
-
-- Multicolinearidade não é um problema grave para modelos de árvore. Mas é sempre bom filtrar variáveis explicativas muito correlacionadas. [Ler esse post para exemplo.](https://www.curso-r.com/blog/2018-05-22-arvore-e-multicolinearidade/)
-
-- Variável resposta precisa ir como factor. Não pode ser character nem 0/1.
-
-- As variáveis categóricas precisam ser "dummyficadas" antes. XGBoost só aceita explicativas numéricas.
-
-- A escala das variáveis explicativas não atrapalham modelos de árvores.
-
-- A assimetria das variáveis explicativas não atrapalham modelos de árvores.
 
 
 ---
@@ -497,6 +528,31 @@ modelo &lt;- boost_tree(
 
 ![](xgboost_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 
+
+
+---
+
+class: inverse, middle, center
+
+# XGBoost
+
+## Na prática
+
+---
+
+# Sobre os problemas nos dados
+
+- XGBoost trata missing automaticamente dentro dele, não precisa tratar. Porém, sempre vale técnicas de imputação para tentar aprimorar o modelo!
+
+- Multicolinearidade não é um problema grave para modelos de árvore. Mas é sempre bom filtrar variáveis explicativas muito correlacionadas. [Ler esse post para exemplo.](https://www.curso-r.com/blog/2018-05-22-arvore-e-multicolinearidade/)
+
+- Variável resposta precisa ir como factor. Não pode ser character nem 0/1.
+
+- As variáveis categóricas precisam ser "dummyficadas" antes. XGBoost só aceita explicativas numéricas.
+
+- A escala das variáveis explicativas não atrapalham modelos de árvores.
+
+- A assimetria das variáveis explicativas não atrapalham modelos de árvores.
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

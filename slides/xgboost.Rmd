@@ -29,11 +29,25 @@ options(htmltools.dir.version = FALSE, fig.retina = 2)
 
 .pull-left[
 
+<img src="img/athos2.jpg" width = 50%>
+
+#### Athos Damiani
+
+Estatístico no IME/USP
+
+Senior Data Scientist na Nubank
 
 ]
 
 .pull-right[
 
+<img src="img/dfalbel.png" width = 65%>
+
+#### Daniel Falbel
+
+Estatístico no IME/USP
+
+Software Engineer na RStudio
 
 ]
 
@@ -82,6 +96,8 @@ options(htmltools.dir.version = FALSE, fig.retina = 2)
 
 - Introdução
 
+- Árvore de Decisão - Mini-revisão
+
 - XGBoost - Teoria
 
 - XGBoost - passo a passo
@@ -100,7 +116,6 @@ options(htmltools.dir.version = FALSE, fig.retina = 2)
 - Google Classroom + Introdução
 - Mostrar as contas na mão num exemplo de 4 pontos (regressão)
 - Mostrar as diferenças entre classificação e regressão
-- Exercícios de Quiz (sem R)
 - Exercícios de Script (algoritmo na mao feito em R)
 
 ]
@@ -112,7 +127,6 @@ options(htmltools.dir.version = FALSE, fig.retina = 2)
 - Pacote tidymodels
 - Como que a matriz X tem que ir (dummy etc)
 - Overfitting/Computação
-- Exercícios de Quiz (sem R)
 - Exercício de treino de tunagem
 - Kaggle InClass
 ]
@@ -195,6 +209,48 @@ options(htmltools.dir.version = FALSE, fig.retina = 2)
 <img src="img/xgb_exemplo2.png" style=" display: block; margin-left: auto; margin-right: auto;width:500px"></img>
 </a>
 
+
+---
+
+## Alinhamento de conceitos
+
+<img src="img/ml_101.png" width = 85%>
+
+---
+
+# XGBoost
+
+.pull-left[
+
+
+## O que XGBoost é:
+
+- Um algoritmo de machine learning
+
+- Um modelo estatístico
+
+- Um fornecedor de probabilidades/estimativas
+
+- Um "concorrente" de regressão logística, random forest, redes neurais, etc.
+
+- Difícil de entender =)
+
+]
+
+.pull-right[
+
+
+## O que XGBoost NÃO é:
+
+- Magia
+
+- Bala de prata para qualquer problema
+
+- Pior que deep learning
+
+- Melhor que deep learning
+
+]
 
 ---
 
@@ -299,31 +355,6 @@ class: inverse, middle, center
 # XGBoost
 
 ## Exemplo passo-a-passo (no pptx)
-
-
----
-
-class: inverse, middle, center
-
-# XGBoost
-
-## Na prática
-
----
-
-# Sobre os problemas nos dados
-
-- XGBoost trata missing automaticamente dentro dele, não precisa tratar. Porém, sempre vale técnicas de imputação para tentar aprimorar o modelo!
-
-- Multicolinearidade não é um problema grave para modelos de árvore. Mas é sempre bom filtrar variáveis explicativas muito correlacionadas. [Ler esse post para exemplo.](https://www.curso-r.com/blog/2018-05-22-arvore-e-multicolinearidade/)
-
-- Variável resposta precisa ir como factor. Não pode ser character nem 0/1.
-
-- As variáveis categóricas precisam ser "dummyficadas" antes. XGBoost só aceita explicativas numéricas.
-
-- A escala das variáveis explicativas não atrapalham modelos de árvores.
-
-- A assimetria das variáveis explicativas não atrapalham modelos de árvores.
 
 
 ---
@@ -530,4 +561,29 @@ dados %>%
   theme_minimal(30)
 ```
 
+
+
+---
+
+class: inverse, middle, center
+
+# XGBoost
+
+## Na prática
+
+---
+
+# Sobre os problemas nos dados
+
+- XGBoost trata missing automaticamente dentro dele, não precisa tratar. Porém, sempre vale técnicas de imputação para tentar aprimorar o modelo!
+
+- Multicolinearidade não é um problema grave para modelos de árvore. Mas é sempre bom filtrar variáveis explicativas muito correlacionadas. [Ler esse post para exemplo.](https://www.curso-r.com/blog/2018-05-22-arvore-e-multicolinearidade/)
+
+- Variável resposta precisa ir como factor. Não pode ser character nem 0/1.
+
+- As variáveis categóricas precisam ser "dummyficadas" antes. XGBoost só aceita explicativas numéricas.
+
+- A escala das variáveis explicativas não atrapalham modelos de árvores.
+
+- A assimetria das variáveis explicativas não atrapalham modelos de árvores.
 
