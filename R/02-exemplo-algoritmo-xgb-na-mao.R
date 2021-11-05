@@ -6,8 +6,7 @@ tibble(x = x, y = y) %>%
   geom_point()
 
 loss <- function(y, y_hat) {
-  # (y - y_hat)^2
-  y_hat - y*log(y_hat)
+  (y - y_hat)^2
 }
 
 # gradiente (G)

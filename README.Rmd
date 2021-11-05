@@ -1,7 +1,7 @@
 ---
 output: github_document
 params: 
-  main_repo: "main-xgboost"
+  main_repo: "202111-xgboost"
   turma: "202111-xgboost"
   nome_curso: "XGBoost"
   num_aula: 1
@@ -9,29 +9,41 @@ params:
   # para baixar o zip do material
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+library(tidyverse)
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  echo = FALSE
+  comment = "#>"
 )
-
-library(magrittr)
 ```
 
-## Informações importantes
 
-```{r results='asis'}
-if(params$download_material == TRUE){
- glue::glue("- [Clique aqui](https://github.com/curso-r/{params$main_repo}/raw/master/material_do_curso.zip) para baixar o material do curso.")
-  }
+## Configuração: Criar um projeto do RStudio
+
+Faça um projeto do RStudio para usar durante todo o curso. O código abaixo irá fazer isso para você.
+
+```{r, eval=FALSE, echo = TRUE}
+install.packages("usethis")
+usethis::create_project("xgboost202111")
 ```
 
-- Nosso blog: [https://curso-r.com/blog/](https://curso-r.com/blog/)
+## Configuração: Instalar pacotes
 
-- Nossos livros: [Ciência de Dados em R](https://livro.curso-r.com/) e [Zen do R](https://curso-r.github.io/zen-do-r/)
+```{r, eval=FALSE, echo = TRUE}
+install.packages('tidyverse')
+install.packages('tidymodels')
+install.packages('rmarkdown')
+install.packages('knitr')
+install.packages('ISLR')
+install.packages('xgboost')
+install.packages('pROC')
+install.packages('vip')
+install.packages('modeldata')
+install.packages('usemodels')
+install.packages('tidypredict')
+```
+
 
 ## Dúvidas
 
@@ -41,90 +53,46 @@ Fora do horário de aula ou monitoria:
 
 - perguntas sobre R, principalmente as que envolverem código, deverão ser enviadas no [nosso fórum](https://discourse.curso-r.com/).
 
-
 ## Slides
 
-```{r}
-paths <- CursoRutils:::list_github_files(params$main_repo, "slides/", "*.html$|*.pptx$|*.pdf$")
-
-tibble::tibble(
-  slide = paths,
-  link = paste0("https://curso-r.github.io/", params$main_repo, "/", slide),
-    slides = glue::glue("[{slide}]({link})")
-) %>% 
-  dplyr::filter(!stringr::str_detect(slide, "_files/|_cache")) %>%
-    dplyr::select(slides) %>% 
-  knitr::kable()
-```
-
-
-## Scripts utilizados em aula
-
-```{r}
-pasta <- "exemplos_de_aula/"
+```{r, echo = FALSE}
+main_repo <- "202111-xgboost"
 knitr::kable(
   tibble::tibble(
-    script = list.files(pasta, pattern = ".R$"),
-    link = paste0("https://curso-r.github.io/", params$turma, "/", pasta, script),
-    scrpit = glue::glue("[{script}]({link})")
-  ) %>%
-    dplyr::select(script)
+    slide = list.files("slides/", "\\.(html)|(pdf)"),
+    link = paste0("https://curso-r.github.io/", main_repo, "/slides/", slide)
+  ) %>% 
+    dplyr::filter(!stringr::str_detect(slide, "_files/")) %>% 
+    dplyr::slice(1:5)
 )
 ```
 
+## Referências externas
 
-## Lição de casa
+#### Machine Learning
 
-```{r}
-tibble::tibble(
-  nome = CursoRutils:::list_github_files(params$main_repo, "exercicios/"),
-  link = paste0("https://curso-r.github.io/", params$main_repo, "/", nome),
-  exercicio = glue::glue("[{nome}]({link})")
-) %>%
-  dplyr::select(exercicio) %>% 
-  knitr::kable()
-```
+- [Introduction to Statistical Learning (Hastie, et al)](https://web.stanford.edu/~hastie/ISLRv2_website.pdf)
+- [Elements of Statistical Learning (Hastie, et al)](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
+- [Computer Age Statistical Inference (Hastie, Efron)](https://web.stanford.edu/~hastie/CASI_files/PDF/casi.pdf)
+- [Tidymodels (Kuhn, et al)](https://www.tidymodels.org/)
+- [Tidy Modeling With R](https://www.tmwr.org/)
+- [XGBoost - Documentação oficial](https://xgboost.readthedocs.io/en/latest/tutorials/model.html)
+- [Feature Engineering and Selection: A Practical Approach for Predictive Models (Kuhn, Kjell)](http://www.feat.engineering/)
+- [Kaggle](https://www.kaggle.com/)
 
+#### Programação em R
 
-## Trabalhos finais premiados
+- [Livro da Curso-R (Curso-R)](https://livro.curso-r.com/)
+- [Tidyverse (Wickham H)](https://www.tidyverse.org/)
+- [R for Data Science (Wickham H)](https://r4ds.had.co.nz/)
+- [Advanced R (Wickham H)](https://adv-r.hadley.nz/)
 
-Em breve
+#### Miscelânea
 
-```{r eval=FALSE, include=FALSE}
-nome_pasta <- "trabalhos_finais"
+- [Tidytext (Silges, et al)](https://www.tidytextmining.com/)
+- [Tabnet model (Falbel)](https://mlverse.github.io/tabnet/)
+- [Forecasting: Principles and Practive (Hyndman, Athanasopoulos)](https://otexts.com/fpp3/)
 
-tibble::tibble(
-  script = list.files(nome_pasta, recursive = FALSE),
-  link = paste0(
-    "https://curso-r.github.io/",
-    params$turma, "/",
-    nome_pasta, "/",
-    script
-  )
-) %>% 
-  knitr::kable()
-```
-
-
-
-## Material extra
-
-Referências extras comentadas nas aulas, ou materiais que comentamos quando tiramos dúvidas (não necessariamente são relacionadas com o conteúdo da aula).
-
-```{r echo=FALSE, message=FALSE}
-# adicione aqui, na aba correspondente ao curso: https://docs.google.com/spreadsheets/d/1SmCKCvJBff3CVty-xYKJ4NhEo2j6sUwkdET46vQisDY/edit?usp=sharing
-
-googlesheets4::gs4_deauth()
-"1SmCKCvJBff3CVty-xYKJ4NhEo2j6sUwkdET46vQisDY" %>% 
-  googledrive::as_id() %>% 
-  googlesheets4::read_sheet(params$main_repo) %>%
-  dplyr::mutate(link = glue::glue("[{desc}]({url})")) %>%
-  dplyr::select(-desc, -url) %>%
-  dplyr::arrange(aula) %>% 
-  dplyr::filter(aula <= params$num_aula) %>% 
-  knitr::kable(col.names = c("Aula", "Tema", "Descrição")) 
-
-```
 
 ## Redes sociais da Curso-R
 

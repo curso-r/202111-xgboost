@@ -1,12 +1,29 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+## Configuração: Criar um projeto do RStudio
 
-## Informações importantes
+Faça um projeto do RStudio para usar durante todo o curso. O código
+abaixo irá fazer isso para você.
 
--   Nosso blog: <https://curso-r.com/blog/>
+``` r
+install.packages("usethis")
+usethis::create_project("xgboost202111")
+```
 
--   Nossos livros: [Ciência de Dados em R](https://livro.curso-r.com/) e
-    [Zen do R](https://curso-r.github.io/zen-do-r/)
+## Configuração: Instalar pacotes
+
+``` r
+install.packages('tidyverse')
+install.packages('tidymodels')
+install.packages('rmarkdown')
+install.packages('knitr')
+install.packages('ISLR')
+install.packages('xgboost')
+install.packages('pROC')
+install.packages('vip')
+install.packages('modeldata')
+install.packages('usemodels')
+install.packages('tidypredict')
+```
 
 ## Dúvidas
 
@@ -19,35 +36,42 @@ Fora do horário de aula ou monitoria:
 
 ## Slides
 
-| slides                                                                                                                                  |
-|:----------------------------------------------------------------------------------------------------------------------------------------|
-| [slides/slides_aux.pptx](https://curso-r.github.io/main-xgboost/slides/slides_aux.pptx)                                                 |
-| [slides/slides_xgb_teoria_e\_passo_a\_passo.pdf](https://curso-r.github.io/main-xgboost/slides/slides_xgb_teoria_e_passo_a_passo.pdf)   |
-| [slides/slides_xgb_teoria_e\_passo_a\_passo.pptx](https://curso-r.github.io/main-xgboost/slides/slides_xgb_teoria_e_passo_a_passo.pptx) |
-| [slides/xgboost.html](https://curso-r.github.io/main-xgboost/slides/xgboost.html)                                                       |
+| slide                                | link                                                                                 |
+|:-------------------------------------|:-------------------------------------------------------------------------------------|
+| xgboost_teoria_e\_passo_a\_passo.pdf | <https://curso-r.github.io/202111-xgboost/slides/xgboost_teoria_e_passo_a_passo.pdf> |
+| xgboost.html                         | <https://curso-r.github.io/202111-xgboost/slides/xgboost.html>                       |
 
-## Scripts utilizados em aula
+## Referências externas
 
-| script |
-|:-------|
+#### Machine Learning
 
-## Lição de casa
+-   [Introduction to Statistical Learning (Hastie, et
+    al)](https://web.stanford.edu/~hastie/ISLRv2_website.pdf)
+-   [Elements of Statistical Learning (Hastie, et
+    al)](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
+-   [Computer Age Statistical Inference (Hastie,
+    Efron)](https://web.stanford.edu/~hastie/CASI_files/PDF/casi.pdf)
+-   [Tidymodels (Kuhn, et al)](https://www.tidymodels.org/)
+-   [Tidy Modeling With R](https://www.tmwr.org/)
+-   [XGBoost - Documentação
+    oficial](https://xgboost.readthedocs.io/en/latest/tutorials/model.html)
+-   [Feature Engineering and Selection: A Practical Approach for
+    Predictive Models (Kuhn, Kjell)](http://www.feat.engineering/)
+-   [Kaggle](https://www.kaggle.com/)
 
-| exercicio |
-|:----------|
+#### Programação em R
 
-## Trabalhos finais premiados
+-   [Livro da Curso-R (Curso-R)](https://livro.curso-r.com/)
+-   [Tidyverse (Wickham H)](https://www.tidyverse.org/)
+-   [R for Data Science (Wickham H)](https://r4ds.had.co.nz/)
+-   [Advanced R (Wickham H)](https://adv-r.hadley.nz/)
 
-Em breve
+#### Miscelânea
 
-## Material extra
-
-Referências extras comentadas nas aulas, ou materiais que comentamos
-quando tiramos dúvidas (não necessariamente são relacionadas com o
-conteúdo da aula).
-
-| Aula | Tema | Descrição |
-|:-----|:-----|:----------|
+-   [Tidytext (Silges, et al)](https://www.tidytextmining.com/)
+-   [Tabnet model (Falbel)](https://mlverse.github.io/tabnet/)
+-   [Forecasting: Principles and Practive (Hyndman,
+    Athanasopoulos)](https://otexts.com/fpp3/)
 
 ## Redes sociais da Curso-R
 
@@ -60,3 +84,25 @@ Twitter: <https://twitter.com/curso_r>
 Linkedin: <https://www.linkedin.com/company/curso-r/>
 
 Facebook: <https://www.facebook.com/cursodeR>
+
+``` r
+# Criar arquivo _config.yml
+if(params$download_material == TRUE){
+ glue::glue('theme: jekyll-theme-minimal', '\n',
+    "logo: assets/logo.png", '\n',
+    "title: {params$nome_curso}", '\n',
+    "show_downloads: true", '\n',
+    "link_material: 'https://github.com/curso-r/{params$main_repo}/raw/master/material_do_curso.zip'", '\n'
+    
+    ) %>%
+    readr::write_lines( "_config.yml")
+}
+
+if(params$download_material == FALSE){
+  glue::glue('theme: jekyll-theme-minimal', '\n',
+    "logo: assets/logo.png", '\n',
+    "title: {params$nome_curso}", '\n',
+    "show_downloads: false", '\n') %>%
+    readr::write_lines( "_config.yml")
+}
+```
