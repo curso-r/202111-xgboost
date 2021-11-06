@@ -344,12 +344,6 @@ Cada "step" é uma árvore
 
 ---
 
-class: middle, center
-
-# 01-exemplo-hiperparametros-sql.R
-
----
-
 class: inverse, middle, center
 
 # XGBoost

@@ -79,26 +79,20 @@ mean((dados$eficacia - dados$predicao_modelo1)^2)
 
 ```{r}
 ajusta_xgboost_e_mostra_as_arvores(2)
-# resposta esperada:
-# predições: -4.2599998  0.8733333  0.8733333  0.8733333  4.8400002  9.9733334  9.9733334  9.9733334
-# erro quadratico médio: 16.40627
 ```
 
 ```{r}
 dados <- dados %>%
   mutate(remedioA = ifelse(remedio == "A", 1, 0)) %>%
   mutate(
-    predicao_modelo2 = 0.5 + case_when(
-      remedio == "B" ~ 6.29999971,
-      TRUE ~ -0.699999988
-    ) + case_when(
-      remedio == "B" & dose <  5 ~  -1.9599998,
-      remedio == "B" & dose >= 5 ~ 3.17333364,
-      remedio == "A" & dose < 5 ~  -4.05999994,
-      remedio == "A" & dose >= 5 ~ 1.07333326
-    )
+    predicao_modelo2 = ### PREENCHA AQUI! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   ) 
 
 mean((dados$eficacia - dados$predicao_modelo2)^2)
+
+
+# resposta esperada:
+# predições: -4.2599998  0.8733333  0.8733333  0.8733333  4.8400002  9.9733334  9.9733334  9.9733334
+# erro quadratico médio: 16.40627
 
 ```
