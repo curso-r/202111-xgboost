@@ -365,7 +365,7 @@ class: inverse, middle, center
 
 #Intuição dos hiperparâmetros
 
-.pull-left[
+.pull-left-small[
 ```{r}
 modelo <- boost_tree(
   mtry = 1, 
@@ -387,7 +387,7 @@ modelo <- boost_tree(
 
 ]
 
-.pull-left[
+.pull-left-small[
 
 ```{r}
 modelo <- boost_tree(
@@ -413,7 +413,7 @@ modelo <- boost_tree(
 
 #Intuição dos hiperparâmetros
 
-.pull-left[
+.pull-left-small[
 ```{r}
 modelo <- boost_tree(
   mtry = 1, 
@@ -435,7 +435,7 @@ modelo <- boost_tree(
 
 ]
 
-.pull-left[
+.pull-left-small[
 
 ```{r}
 modelo <- boost_tree(
@@ -462,7 +462,7 @@ modelo <- boost_tree(
 
 #Intuição dos hiperparâmetros
 
-.pull-left[
+.pull-left-small[
 ```{r}
 modelo <- boost_tree(
   mtry = 1, 
@@ -484,7 +484,7 @@ modelo <- boost_tree(
 
 ]
 
-.pull-left[
+.pull-left-small[
 
 ```{r}
 modelo <- boost_tree(

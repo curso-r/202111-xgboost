@@ -121,10 +121,24 @@ a, a > code {
   float: left;
   width: 47%;
 }
+
+.pull-left-small {
+  float: left;
+  width: 47%;
+  font-size: 16px;
+}
+
 .pull-right {
   float: right;
   width: 47%;
 }
+
+.pull-right-small {
+  float: right;
+  width: 47%;
+  font-size: 16px;
+}
+
 .pull-right ~ * {
   clear: both;
 }

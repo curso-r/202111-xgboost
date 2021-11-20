@@ -154,7 +154,6 @@ Em seguida vamos tunar o `learn_rate` e `trees` em um grid assim:
 -   `trees` - 100, 500, 1000, 1500
 
 ```{r}
-
 cores = 4
 telco_model <- boost_tree(
   mtry = 0.8, 
@@ -389,9 +388,9 @@ telco_model <- boost_tree(
   set_mode("classification") %>%
   set_engine("xgboost", nthread = cores, counts = FALSE)
 
-grid_regular()
-grid_random()
-tune_bayes()
+# grid_regular()
+# grid_random()
+# tune_bayes()
 
 #### Workflow
 telco_wf <- workflow() %>% 
